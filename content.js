@@ -37,3 +37,16 @@ if (jobsGrid) {
     })
     .catch(() => {});
 }
+
+const clientsMarquee = document.getElementById("clientsMarquee");
+if (clientsMarquee) {
+  fetch("content/clients.json")
+    .then((r) => r.json())
+    .then((data) => {
+      const items = (data && data.items) || [];
+      if (!items.length) return;
+      const spans = items.map((it) => `<span>${esc(it.name)}</span>`).join("");
+      clientsMarquee.innerHTML = spans + spans;
+    })
+    .catch(() => {});
+}

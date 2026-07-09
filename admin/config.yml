@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: snakajima-ops/kaneko-e-website
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "site"
+    label: "サイト編集"
+    files:
+      - name: "works"
+        label: "工事実績"
+        file: "content/works.json"
+        fields:
+          - label: "実績一覧"
+            name: "items"
+            widget: "list"
+            label_singular: "実績"
+            summary: "{{title}}"
+            fields:
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "説明", name: "description", widget: "text" }
+              - { label: "写真（任意）", name: "image", widget: "image", required: false }
+      - name: "jobs"
+        label: "採用情報（募集職種）"
+        file: "content/jobs.json"
+        fields:
+          - label: "求人一覧"
+            name: "items"
+            widget: "list"
+            label_singular: "求人"
+            summary: "{{title}}"
+            fields:
+              - { label: "雇用形態タグ", name: "tag", widget: "string", default: "正社員" }
+              - { label: "職種名", name: "title", widget: "string" }
+              - { label: "説明", name: "description", widget: "text" }

@@ -36,3 +36,14 @@ collections:
               - { label: "雇用形態タグ", name: "tag", widget: "string", default: "正社員" }
               - { label: "職種名", name: "title", widget: "string" }
               - { label: "説明", name: "description", widget: "text" }
+      - name: "clients"
+        label: "主な取引先"
+        file: "content/clients.json"
+        fields:
+          - label: "取引先一覧"
+            name: "items"
+            widget: "list"
+            label_singular: "取引先"
+            summary: "{{name}}"
+            fields:
+              - { label: "名称", name: "name", widget: "string" }

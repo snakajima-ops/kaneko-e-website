@@ -79,12 +79,16 @@ window.setupCardReveal = setupCardReveal;
 /* counters */
 gsap.utils.toArray(".counter").forEach((el) => {
   const target = +el.dataset.target;
+  const noComma = el.dataset.noComma === "true";
   ScrollTrigger.create({
     trigger: el, start: "top 90%", once: true,
     onEnter: () => {
       gsap.fromTo(el, { innerText: 0 }, {
         innerText: target, duration: 1.8, ease: "power1.out", snap: { innerText: 1 },
-        onUpdate: function () { el.innerText = Math.floor(el.innerText).toLocaleString(); }
+        onUpdate: function () {
+          const n = Math.floor(el.innerText);
+          el.innerText = noComma ? n : n.toLocaleString();
+        }
       });
     }
   });

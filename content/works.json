@@ -1,24 +1,15 @@
 {
-  "items": [
-    {
-      "title": "電気設備工事",
-      "description": "案件名（準備中）",
-      "image": ""
-    },
-    {
-      "title": "消防施設工事",
-      "description": "案件名（準備中）",
-      "image": ""
-    },
-    {
-      "title": "官公庁案件",
-      "description": "案件名（準備中）",
-      "image": ""
-    },
-    {
-      "title": "民間案件",
-      "description": "案件名（準備中）",
-      "image": ""
-    }
-  ]
+    "items": [
+          { "title": "いずみの森義務教育学校（八王子市）", "description": "新築電気設備工事", "image": "" },
+          { "title": "八王子市立看護専門学校", "description": "大規模改修電気設備工事", "image": "" },
+          { "title": "八王子市本庁舎", "description": "照明設備改修工事", "image": "" },
+          { "title": "たがの杜小中学校（八王子市）", "description": "新築電気設備工事（令和8年2月竣工予定）", "image": "" },
+          { "title": "マンション（2棟）", "description": "電気設備工事", "image": "" },
+          { "title": "工場", "description": "電気設備工事", "image": "" },
+          { "title": "テナントビル", "description": "電気設備工事", "image": "" },
+          { "title": "保育園", "description": "電気設備工事", "image": "" },
+          { "title": "幼稚園", "description": "電気設備工事", "image": "" },
+          { "title": "商業施設", "description": "電気設備工事", "image": "" },
+          { "title": "福祉施設", "description": "電気設備工事", "image": "" }
+    ]
 }

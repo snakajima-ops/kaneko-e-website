@@ -1,0 +1,10 @@
+# 旧Googleサイト（日本語URL）から新サイトへの転送
+/会社概要 /about 301
+/工事実績 /works 301
+/採用情報 /recruit 301
+/ホーム / 301
+/home / 301
+/%E4%BC%9A%E7%A4%BE%E6%A6%82%E8%A6%81 /about 301
+/%E5%B7%A5%E4%BA%8B%E5%AE%9F%E7%B8%BE /works 301
+/%E6%8E%A1%E7%94%A8%E6%83%85%E5%A0%B1 /recruit 301
+/%E3%83%9B%E3%83%BC%E3%83%A0 / 301

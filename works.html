@@ -44,6 +44,66 @@
   </div>
   <div class="service-grid" id="worksGrid"></div>
 </section>
+<section class="services tight">
+<div class="section-head reveal">
+<span class="section-tag">Project</span>
+<h2>施工事例：テナントビル</h2>
+<p>新築電気設備工事。360度ビューでは、実際の共用部をその場に立ったようにご覧いただけます。</p>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<div class="reveal" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+<div id="panoView" style="width:100%;aspect-ratio:16/9;min-height:300px;border-radius:4px;overflow:hidden;background:#111;box-shadow:0 20px 60px rgba(0,0,0,.14);"></div>
+<div id="panoThumbs" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center;"></div>
+<p style="text-align:center;font-size:.85rem;color:var(--muted);margin-top:14px;">画面をドラッグすると見回せます。下のサムネイルで場所を切り替えられます。</p>
+</div>
+<div class="reveal" style="max-width:1200px;margin:64px auto 0;padding:0 24px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;">
+<img src="yagishita-01.jpg" alt="テナントビル 外観" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-02.jpg" alt="テナントビル 外観" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-03.jpg" alt="テナントビル 外観" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-07.jpg" alt="テナントビル 夜景" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-08.jpg" alt="テナントビル 夜景" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-09.jpg" alt="テナントビル 夜景" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-10.jpg" alt="テナントビル 夜景" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-11.jpg" alt="テナントビル 夜景" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-04.jpg" alt="エントランスアプローチ" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;border-radius:4px;">
+<img src="yagishita-05.jpg" alt="エントランスホール 建築化照明" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;display:block;border-radius:4px;">
+<img src="yagishita-06.jpg" alt="エントランスホール" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;display:block;border-radius:4px;">
+<img src="yagishita-12.jpg" alt="貸室 内観 照明計画" loading="lazy" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;display:block;border-radius:4px;">
+</div>
+<p style="text-align:center;font-size:.82rem;color:var(--muted);margin-top:18px;">※ 建物名・テナント名は非公開のため、一部を処理しています。</p>
+</div>
+<script>
+(function(){
+var list=[
+{id:'s1',img:'pano-05.jpg',th:'pano-05-thumb.jpg',t:'3階 エレベーターホール'},
+{id:'s2',img:'pano-01.jpg',th:'pano-01-thumb.jpg',t:'9階 エレベーターホール'},
+{id:'s3',img:'pano-02.jpg',th:'pano-02-thumb.jpg',t:'9階 貸室'},
+{id:'s4',img:'pano-04.jpg',th:'pano-04-thumb.jpg',t:'多目的トイレ'},
+{id:'s5',img:'pano-03.jpg',th:'pano-03-thumb.jpg',t:'屋上'}
+];
+function init(){
+if(typeof pannellum==='undefined'){setTimeout(init,300);return;}
+var scenes={};
+list.forEach(function(s){scenes[s.id]={type:'equirectangular',panorama:s.img,autoLoad:true,hfov:100,title:s.t};});
+var viewer=pannellum.viewer('panoView',{default:{firstScene:'s1',autoLoad:true,sceneFadeDuration:700,friction:0.15},scenes:scenes});
+var wrap=document.getElementById('panoThumbs');
+list.forEach(function(s){
+var b=document.createElement('button');
+b.type='button';b.title=s.t;b.setAttribute('aria-label',s.t);
+b.style.cssText='padding:0;border:2px solid transparent;background:none;cursor:pointer;border-radius:3px;overflow:hidden;line-height:0;';
+b.innerHTML='<img src="'+s.th+'" alt="'+s.t+'" loading="lazy" style="width:120px;height:60px;object-fit:cover;display:block;">';
+b.addEventListener('click',function(){viewer.loadScene(s.id);mark(s.id);});
+b.dataset.sid=s.id;wrap.appendChild(b);
+});
+function mark(id){Array.prototype.forEach.call(wrap.children,function(c){c.style.borderColor=(c.dataset.sid===id)?'#c8102e':'transparent';});}
+mark('s1');
+}
+init();
+})();
+</script>
+</section>
 
 <section class="band">
   <div class="band-bg" id="bandBg"></div>

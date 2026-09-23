@@ -102,3 +102,44 @@ if (document.getElementById("bandBg")) {
     scrollTrigger: { trigger: ".band", start: "top bottom", end: "bottom top", scrub: true }
   });
 }
+
+
+/* ===== モバイルナビゲーション ===== */
+(function () {
+  var header = document.getElementById('siteHeader');
+  if (!header) return;
+  var nav = header.querySelector('nav');
+  if (!nav) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'nav-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'メニューを開く');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<i></i><i></i><i></i>';
+  header.appendChild(btn);
+
+  var backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  document.body.appendChild(backdrop);
+
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  }
+
+  btn.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  backdrop.addEventListener('click', function () { setOpen(false); });
+  nav.addEventListener('click', function (e) {
+    if (e.target && e.target.tagName === 'A') setOpen(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 820) setOpen(false);
+  });
+})();

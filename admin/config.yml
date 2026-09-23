@@ -47,3 +47,25 @@ collections:
             summary: "{{name}}"
             fields:
               - { label: "名称", name: "name", widget: "string" }
+
+      - name: "news"
+        label: "お知らせ"
+        file: "content/news.json"
+        fields:
+          - label: "お知らせ一覧"
+            name: "items"
+            widget: "list"
+            label_singular: "お知らせ"
+            summary: "{{date}} {{title}}"
+            fields:
+              - { label: "日付", name: "date", widget: "datetime", format: "YYYY.MM.DD", date_format: "YYYY.MM.DD", time_format: false }
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "本文（段落を分けるときは1行空けてください）", name: "body", widget: "text" }
+              - label: "写真（任意・1枚目が大きく表示されます）"
+                name: "images"
+                widget: "list"
+                required: false
+                label_singular: "写真"
+                fields:
+                  - { label: "画像", name: "image", widget: "image" }
+                  - { label: "説明文（任意）", name: "caption", widget: "string", required: false }

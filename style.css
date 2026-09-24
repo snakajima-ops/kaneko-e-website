@@ -399,3 +399,10 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
   letter-spacing: .22em;
   color: #b9c0cf;
 }
+
+/* ホタル表示灯は右側 */
+.scroll-cue .bar::after { left: auto; right: 10px; }
+
+/* 押せるスイッチに */
+.scroll-cue { cursor: pointer; }
+.scroll-cue:active .bar { box-shadow: 0 2px 8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.9); }

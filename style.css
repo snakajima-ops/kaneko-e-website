@@ -328,46 +328,66 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
 }
 
 
-/* ===== スクロール誘導：スイッチ ===== */
+/* ===== スクロール誘導：ワイドスイッチ ===== */
 .scroll-cue .bar {
-  width: 30px;
-  height: 52px;
-  background: rgba(255, 255, 255, .05);
-  border: 1px solid rgba(255, 255, 255, .25);
-  border-radius: 5px;
+  width: 42px;
+  height: 58px;
+  background: #f4f5f7;
+  border: 1px solid rgba(0, 0, 0, .18);
+  border-radius: 6px;
   overflow: visible;
-  animation: kanekoPlate 2.6s ease-in-out infinite;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .9);
+  perspective: 220px;
+  animation: none;
 }
+/* ハンドル（ロッカー） */
+.scroll-cue .bar::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 48px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, #edeff2 52%, #e1e4e9 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+  animation: kanekoRocker 2.8s ease-in-out infinite;
+}
+/* ホタル表示灯 */
 .scroll-cue .bar::after {
   content: "";
   position: absolute;
   top: auto;
-  bottom: 4px;
-  left: 4px;
-  width: 20px;
-  height: 22px;
-  border-radius: 3px;
-  background: #8a93a5;
-  animation: kanekoSwitch 2.6s ease-in-out infinite;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -5px;
+  width: 10px;
+  height: 5px;
+  border-radius: 1.5px;
+  transform: none;
+  background: #7fe0a0;
+  box-shadow: 0 0 8px rgba(127, 224, 160, .9);
+  animation: kanekoHotaru 2.8s ease-in-out infinite;
 }
-@keyframes kanekoSwitch {
-  0%, 40%  { transform: translateY(0); background: #8a93a5; box-shadow: none; }
-  52%, 88% { transform: translateY(-22px); background: var(--red); box-shadow: 0 0 14px rgba(215, 25, 32, .85); }
-  100%     { transform: translateY(0); background: #8a93a5; box-shadow: none; }
+@keyframes kanekoRocker {
+  0%, 38%  { transform: rotateX(-7deg); }
+  50%, 88% { transform: rotateX(7deg); }
+  100%     { transform: rotateX(-7deg); }
 }
-@keyframes kanekoPlate {
-  0%, 40%  { border-color: rgba(255, 255, 255, .25); }
-  52%, 88% { border-color: rgba(255, 255, 255, .55); }
-  100%     { border-color: rgba(255, 255, 255, .25); }
+@keyframes kanekoHotaru {
+  0%, 38%  { background: #7fe0a0; box-shadow: 0 0 8px rgba(127, 224, 160, .9); }
+  50%, 88% { background: var(--red); box-shadow: 0 0 11px rgba(215, 25, 32, .95); }
+  100%     { background: #7fe0a0; box-shadow: 0 0 8px rgba(127, 224, 160, .9); }
 }
 #siteHeader.scrolled ~ .hero .scroll-cue {
   opacity: 0;
   transition: opacity .45s;
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-cue .bar,
+  .scroll-cue .bar::before,
   .scroll-cue .bar::after { animation: none; }
-  .scroll-cue .bar::after { transform: translateY(-22px); background: var(--red); }
+  .scroll-cue .bar::before { transform: rotateX(7deg); }
+  .scroll-cue .bar::after { background: var(--red); box-shadow: 0 0 11px rgba(215, 25, 32, .95); }
 }
 
 /* 数字カウンターのガタつき防止 */

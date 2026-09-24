@@ -154,3 +154,24 @@ document.querySelectorAll('.counter').forEach(function (el) {
   el.style.minWidth = s.length + 'ch';
   el.style.maxWidth = '100%';
 });
+
+
+/* スクロール誘導スイッチ：押したら次のセクションへ */
+document.querySelectorAll('.scroll-cue').forEach(function (cue) {
+  cue.setAttribute('role', 'button');
+  cue.setAttribute('tabindex', '0');
+  cue.setAttribute('aria-label', '下へスクロール');
+  function go() {
+    var hero = cue.closest('.hero') || cue.parentElement;
+    var next = hero && hero.nextElementSibling;
+    if (next) {
+      next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    }
+  }
+  cue.addEventListener('click', go);
+  cue.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+  });
+});

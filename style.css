@@ -326,3 +326,49 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
   body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
   body.nav-open { overflow: hidden; }
 }
+
+
+/* ===== スクロール誘導：スイッチ ===== */
+.scroll-cue .bar {
+  width: 30px;
+  height: 52px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 5px;
+  overflow: visible;
+  animation: kanekoPlate 2.6s ease-in-out infinite;
+}
+.scroll-cue .bar::after {
+  content: "";
+  position: absolute;
+  top: auto;
+  bottom: 4px;
+  left: 4px;
+  width: 20px;
+  height: 22px;
+  border-radius: 3px;
+  background: #8a93a5;
+  animation: kanekoSwitch 2.6s ease-in-out infinite;
+}
+@keyframes kanekoSwitch {
+  0%, 40%  { transform: translateY(0); background: #8a93a5; box-shadow: none; }
+  52%, 88% { transform: translateY(-22px); background: var(--red); box-shadow: 0 0 14px rgba(215, 25, 32, .85); }
+  100%     { transform: translateY(0); background: #8a93a5; box-shadow: none; }
+}
+@keyframes kanekoPlate {
+  0%, 40%  { border-color: rgba(255, 255, 255, .25); }
+  52%, 88% { border-color: rgba(255, 255, 255, .55); }
+  100%     { border-color: rgba(255, 255, 255, .25); }
+}
+#siteHeader.scrolled ~ .hero .scroll-cue {
+  opacity: 0;
+  transition: opacity .45s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue .bar,
+  .scroll-cue .bar::after { animation: none; }
+  .scroll-cue .bar::after { transform: translateY(-22px); background: var(--red); }
+}
+
+/* 数字カウンターのガタつき防止 */
+.stats .counter { font-variant-numeric: tabular-nums; }

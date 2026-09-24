@@ -143,3 +143,14 @@ if (document.getElementById("bandBg")) {
     if (window.innerWidth > 820) setOpen(false);
   });
 })();
+
+
+/* 数字カウンター：桁数ぶんの幅を先に確保してガタつきを防ぐ */
+document.querySelectorAll('.counter').forEach(function (el) {
+  var t = Number(el.dataset.target) || 0;
+  var s = el.dataset.noComma ? String(t) : t.toLocaleString();
+  el.style.display = 'inline-block';
+  el.style.textAlign = 'center';
+  el.style.minWidth = s.length + 'ch';
+  el.style.maxWidth = '100%';
+});

@@ -330,8 +330,8 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
 
 /* ===== スクロール誘導：ワイドスイッチ ===== */
 .scroll-cue .bar {
-  width: 42px;
-  height: 58px;
+  width: 58px;
+  height: 42px;
   background: #f4f5f7;
   border: 1px solid rgba(0, 0, 0, .18);
   border-radius: 6px;
@@ -346,10 +346,10 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 32px;
-  height: 48px;
+  width: 48px;
+  height: 32px;
   border-radius: 3px;
-  background: linear-gradient(180deg, #ffffff 0%, #edeff2 52%, #e1e4e9 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #edeff2 52%, #e1e4e9 100%);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
   animation: kanekoRocker 2.8s ease-in-out infinite;
 }
@@ -357,12 +357,12 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
 .scroll-cue .bar::after {
   content: "";
   position: absolute;
-  top: auto;
-  bottom: 10px;
-  left: 50%;
-  margin-left: -5px;
-  width: 10px;
-  height: 5px;
+  top: 50%;
+  bottom: auto;
+  left: 10px;
+  margin: -5px 0 0 0;
+  width: 5px;
+  height: 10px;
   border-radius: 1.5px;
   transform: none;
   background: #7fe0a0;
@@ -370,9 +370,9 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
   animation: kanekoHotaru 2.8s ease-in-out infinite;
 }
 @keyframes kanekoRocker {
-  0%, 38%  { transform: rotateX(-7deg); }
-  50%, 88% { transform: rotateX(7deg); }
-  100%     { transform: rotateX(-7deg); }
+  0%, 38%  { transform: rotateY(7deg); }
+  50%, 88% { transform: rotateY(-7deg); }
+  100%     { transform: rotateY(7deg); }
 }
 @keyframes kanekoHotaru {
   0%, 38%  { background: #7fe0a0; box-shadow: 0 0 8px rgba(127, 224, 160, .9); }
@@ -386,9 +386,16 @@ footer .copyright{padding-top:24px;text-align:center;letter-spacing:.05em;}
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue .bar::before,
   .scroll-cue .bar::after { animation: none; }
-  .scroll-cue .bar::before { transform: rotateX(7deg); }
+  .scroll-cue .bar::before { transform: rotateY(-7deg); }
   .scroll-cue .bar::after { background: var(--red); box-shadow: 0 0 11px rgba(215, 25, 32, .95); }
 }
 
 /* 数字カウンターのガタつき防止 */
 .stats .counter { font-variant-numeric: tabular-nums; }
+
+/* スクロール誘導の文字（ひらがな・読みやすさ優先） */
+.scroll-cue span {
+  font-size: .82rem;
+  letter-spacing: .22em;
+  color: #b9c0cf;
+}

@@ -165,7 +165,7 @@ document.querySelectorAll('.scroll-cue').forEach(function (cue) {
     var hero = cue.closest('.hero') || cue.parentElement;
     var next = hero && hero.nextElementSibling;
     if (next) {
-      next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: next.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
     } else {
       window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
     }
